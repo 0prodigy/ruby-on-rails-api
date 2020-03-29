@@ -19,12 +19,25 @@ module Api
             else 
                 render json: {status:'ERROR', message: 'Article not saved', data:article.errors},status: :unprocessable_entity
             end
+        end    
+        def destroy 
+            article = Article.find(params[:id]);
+            article.destroy
+            render json:{status:"SUCCESS", message: "Deleted", data: article}, status: :ok
+        end
+        def update 
+            article = Article.find(params[:id]);
+            if article.update_attributes(article_params) 
+                render json: {status:'SUCCESS', message: 'Update articles', data:article},status: :ok
+            else 
+                render json: {status:'ERROR', message: 'Article not update', data:article.errors},status: :unprocessable_entity
+            end
         end
 
         private 
-    def article_params 
-       params.require(:article).permit(:title, :body)
-    end
+        def article_params 
+        params.require(:article).permit(:title, :body)
+        end
     end
     end
     
