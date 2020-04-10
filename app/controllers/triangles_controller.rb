@@ -1,0 +1,2 @@
+class TrianglesController < ApplicationController
+end
