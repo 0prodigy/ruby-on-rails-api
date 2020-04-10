@@ -1,0 +1,15 @@
+<h1>Edit Post </h1>
+
+<%= form_for(@post) do |f| %>
+<p>
+    <%= f.label :title%> <br>
+    <%= f.text_field :title, class:'form-control' %>
+</p>
+<p>
+    <%= f.label :body%> <br>
+    <%= f.text_field :body, class:  'form-control' %>
+</p>
+<p>
+    <%= f.submit class: 'btn btn-sm btn-primary' %> 
+</p>
+<%end%>

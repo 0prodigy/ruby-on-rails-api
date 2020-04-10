@@ -5,11 +5,14 @@ module Api
         def index
 
             @articles = Article.order('created_at DESC');
-            render json: {status:'SUCCESS', message: 'Loaded articles', data:@articles},status: :ok
+            # render json: {status:'SUCCESS', message: 'Loaded articles', data:@articles},status: :ok
+            
+            render "articles/index"
         end
         def show 
             article = Article.find(params[:id]);
-            render json: {status:'SUCCESS', message: 'Loaded articles', data:article},status: :ok
+            # render json: {status:'SUCCESS', message: 'Loaded articles', data:article},status: :ok
+            render "articles/show"
 
         end
         def create 
