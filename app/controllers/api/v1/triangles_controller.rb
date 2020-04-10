@@ -6,10 +6,14 @@ module Api
             triangle = triangle_params
            
 
-            if triangle_params.a == triangle_params.b == triangle_params.c
+            if (params[:a] == params[:b]) && (params[:a] == params[:c]) && (params[:b] == params[:c])
                 render json: {status:'SUCCESS', message: 'Equilateral triangle', data:triangle},status: :ok
-                print("Equilateral triangle")
-            elsif triangle_params.a==triangle_params.b or triangle_params.b==triangle_params.c or triangle_params.c==triangle_params.a
+
+            elsif (params[:a] == params[:b]) && ((params[:a] || params[:b]) != params[:c])
+                render json: {status:'SUCCESS', message: 'isosceles triangle', data:triangle},status: :ok
+            elsif (params[:a] == params[:c]) && ((params[:a] || params[:c]) != params[:b])
+                render json: {status:'SUCCESS', message: 'isosceles triangle', data:triangle},status: :ok
+            elsif (params[:b] == params[:c]) && ((params[:b] || params[:c]) != params[:a])
                 render json: {status:'SUCCESS', message: 'isosceles triangle', data:triangle},status: :ok
             else
                 render json: {status:'SUCCESS', message: 'Scalene triangle', data:triangle},status: :ok
